@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Book</title>
-  <link rel="stylesheet" href="public/styles/style.css">
+  <link rel="stylesheet" href="/styles/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+  <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css”/>
+  <link rel="stylesheet" href=
+          "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 </head>
 <body>
 <header>
@@ -62,55 +65,96 @@
     <p>Current_Price</p>
     <div class="order-form">
       <div class="tabs">
-        <button class="tab-button active" data-tab="buy">Buy</button>
-        <button class="tab-button" data-tab="sell">Sell</button>
+        <button class="form-tab-button active" data-tab="buy">Buy</button>
+        <button class="form-tab-button" data-tab="sell">Sell</button>
       </div>
       <form id="buy-form" class="active-form">
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" min="0" step="1">
-
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" min="0" step="0.01">
-
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" name="amount" min="0" step="1">
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" id="price" name="price" min="0" step="0.01">
+        </div>
         <button type="submit" class="buy-button">Buy</button>
       </form>
       <form id="sell-form" class="hidden-form">
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" min="0" step="1">
-
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" min="0" step="0.01">
-
+        <div class="form-group">
+          <label for="amount_">Amount:</label>
+          <input type="number" id="amount_" name="amount" min="0" step="1">
+        </div>
+        <div class="form-group">
+          <label for="price_">Price:</label>
+          <input type="number" id="price_" name="price" min="0" step="0.01">
+        </div>
         <button type="submit" class="sell-button">Sell</button>
       </form>
     </div>
+
+    <!-- Order History Section -->
     <div class="user-orders-history">
       <div class="tabs">
-        <button class="tab-button active" data-tab="buy-history">Buy Orders</button>
-        <button class="tab-button" data-tab="sell-history">Sell Orders</button>
+        <button class="history-tab-button active" data-tab="buy-history">Buy Orders</button>
+        <button class="history-tab-button" data-tab="sell-history">Sell Orders</button>
       </div>
+
       <div id="buy-history" class="active-form">
-        <p>Price - Amount - Total - Time</p>
-        <p>100 - 2 - 200 - 12:00</p>
+        <table>
+          <thead>
+          <tr>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Total</th>
+            <th>Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>100</td>
+            <td>2</td>
+            <td>200</td>
+            <td>12:00</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
+
       <div id="sell-history" class="hidden-form">
-        <p>Price - Amount - Total - Time</p>
-        <p>150 - 1 - 150 - 13:00</p>
+        <table>
+          <thead>
+          <tr>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Total</th>
+            <th>Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>150</td>
+            <td>1</td>
+            <td>150</td>
+            <td>13:00</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+
   </section>
 </main>
 
 <footer>
-  <div class="social-icons">
-    <a href="#"><img src="icon_facebook.png" alt="Facebook">1</a>
-    <a href="#"><img src="icon_twitter.png" alt="Twitter">2</a>
-    <a href="#"><img src="icon_linkedin.png" alt="LinkedIn">3</a>
-    <a href="#"><img src="icon_instagram.png" alt="Instagram">4</a>
+  <div class="m-4">
+    <i class="bi bi-facebook"></i>
+    <i class="bi bi-instagram"></i>
+    <i class="bi bi-telegram"></i>
+    <i class="bi bi-twitch"></i>
   </div>
   <p>&copy; 2024 Order Book. All rights reserved.</p>
 </footer>
 
-<script src="/src/main.ts"></script>
+<script src="/src/form_btn.ts"></script>
 </body>
 </html>
