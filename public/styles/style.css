@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.nav-title {
+    font-size: 1.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+}
+
+.table-section {
+    width: 80%;
+    padding-right: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.block2 {
+    width: 20%;
+    padding-left: 20px;
+}
+
+.block2 h2, .block2 p {
+    margin-bottom: 10px;
+}
+
+.order-form {
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tab-button {
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background-color: #333;
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    padding: 5px;
+}
+
+.buy-button, .sell-button {
+    padding: 10px;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.sell-button {
+    background-color: #f44336;
+}
+
+.user-orders-history {
+    margin-top: 20px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    align-items: center;
+}
+
+.social-icons a {
+    margin-right: 10px;
+}
+
+.hidden-form {
+    display: none;
+}
+
+.active-form {
+    display: block;
+}

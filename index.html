@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Book</title>
+  <link rel="stylesheet" href="public/styles/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="nav-title">Order_Book</div>
+  <nav>
+    <ul>
+      <li><a href="#">Order_Book</a></li>
+      <li><a href="#">Account</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="table-section">
+    <table>
+      <thead>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Row 1, Col 1</td>
+        <td>Row 1, Col 2</td>
+        <td>Row 1, Col 3</td>
+        <td>Row 1, Col 4</td>
+      </tr>
+      <tr>
+        <td>Row 2, Col 1</td>
+        <td>Row 2, Col 2</td>
+        <td>Row 2, Col 3</td>
+        <td>Row 2, Col 4</td>
+      </tr>
+      <tr>
+        <td>Row 3, Col 1</td>
+        <td>Row 3, Col 2</td>
+        <td>Row 3, Col 3</td>
+        <td>Row 3, Col 4</td>
+      </tr>
+      <tr>
+        <td>Row 4, Col 1</td>
+        <td>Row 4, Col 2</td>
+        <td>Row 4, Col 3</td>
+        <td>Row 4, Col 4</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="block2">
+    <h2>Stock_Name</h2>
+    <p>Current_Price</p>
+    <div class="order-form">
+      <div class="tabs">
+        <button class="tab-button active" data-tab="buy">Buy</button>
+        <button class="tab-button" data-tab="sell">Sell</button>
+      </div>
+      <form id="buy-form" class="active-form">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" min="0" step="1">
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" min="0" step="0.01">
+
+        <button type="submit" class="buy-button">Buy</button>
+      </form>
+      <form id="sell-form" class="hidden-form">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" min="0" step="1">
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" min="0" step="0.01">
+
+        <button type="submit" class="sell-button">Sell</button>
+      </form>
+    </div>
+    <div class="user-orders-history">
+      <div class="tabs">
+        <button class="tab-button active" data-tab="buy-history">Buy Orders</button>
+        <button class="tab-button" data-tab="sell-history">Sell Orders</button>
+      </div>
+      <div id="buy-history" class="active-form">
+        <p>Price - Amount - Total - Time</p>
+        <p>100 - 2 - 200 - 12:00</p>
+      </div>
+      <div id="sell-history" class="hidden-form">
+        <p>Price - Amount - Total - Time</p>
+        <p>150 - 1 - 150 - 13:00</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="social-icons">
+    <a href="#"><img src="icon_facebook.png" alt="Facebook">1</a>
+    <a href="#"><img src="icon_twitter.png" alt="Twitter">2</a>
+    <a href="#"><img src="icon_linkedin.png" alt="LinkedIn">3</a>
+    <a href="#"><img src="icon_instagram.png" alt="Instagram">4</a>
+  </div>
+  <p>&copy; 2024 Order Book. All rights reserved.</p>
+</footer>
+
+<script src="/src/main.ts"></script>
+</body>
+</html>
