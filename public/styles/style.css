@@ -89,6 +89,22 @@ th:nth-child(4), td:nth-child(4) {
     position: relative;
 }
 
+.sell-row .sell-price {
+    color: red;
+}
+
+.sell-price {
+    color: red;
+}
+
+.buy-row .buy-price {
+    color: green;
+}
+
+.buy-price {
+    color: green;
+}
+
 .divider-row .average-price {
     font-weight: bold;
     border-top: 2px solid black;
