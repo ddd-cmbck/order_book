@@ -40,22 +40,59 @@ main {
     padding: 20px;
 }
 
-.table-section {
-    width: 80%;
-    padding-right: 20px;
-}
-
-table {
+.table-section table {
     width: 100%;
     border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid black;
+    table-layout: fixed;
 }
 
 th, td {
+    text-align: left;
     padding: 10px;
+}
+
+th:nth-child(1), td:nth-child(1),
+th:nth-child(2), td:nth-child(2),
+th:nth-child(3), td:nth-child(3) {
+    width: 1vw;
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 2vw;
+}
+
+.bar-container {
+    position: relative;
+    height: 30px;
+}
+.bar {
+    position: absolute;
+    height: 30px;
+    top: 0;
+    background-color: transparent;
+    border: 2px solid;
+}
+
+.sell-bar {
+    border-color: red;
+    right: 0;
+}
+
+.buy-bar {
+    border-color: green;
+    right: 0;
+}
+
+.sell-row .bar-container,
+.buy-row .bar-container {
+    display: flex;
+    position: relative;
+}
+
+.divider-row .average-price {
+    font-weight: bold;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     text-align: left;
 }
 
