@@ -33,49 +33,11 @@
       </tr>
       </thead>
       <tbody id="order-book">
-      <tr class="sell-row">
-        <td class="price sell-price">31917.91</td>
-        <td>0.1268</td>
-        <td>4047.19</td>
-        <td>
-          <div class="bar-container">
-            <div class="bar sell-bar" style="width: 99%;"></div>
-          </div>
-        </td>
-      </tr>
-      <tr class="sell-row">
-        <td class="price sell-price">31917.91</td>
-        <td>0.1268</td>
-        <td>4047.19</td>
-        <td>
-          <div class="bar-container">
-            <div class="bar sell-bar" style="width: 70%;"></div>
-          </div>
-        </td>
-      </tr>
+      <!-- Sell orders will be inserted here dynamically -->
       <tr class="divider-row">
         <td colspan="4" class="average-price">31,912.16 ↓</td>
       </tr>
-      <tr class="buy-row">
-        <td class="price buy-price">31910.96</td>
-        <td>0.7100</td>
-        <td>22656.78</td>
-        <td>
-          <div class="bar-container">
-            <div class="bar buy-bar" style="width: 55%;"></div>
-          </div>
-        </td>
-      </tr>
-      <tr class="buy-row">
-        <td class="price buy-price">31910.96</td>
-        <td>0.7100</td>
-        <td>22656.78</td>
-        <td>
-          <div class="bar-container">
-            <div class="bar buy-bar" style="width: 78%;"></div>
-          </div>
-        </td>
-      </tr>
+      <!-- Buy orders will be inserted here dynamically -->
       </tbody>
     </table>
   </section>
@@ -177,5 +139,7 @@
 </footer>
 
 <script src="/src/form_btn.ts"></script>
+<script src="/src/dynamic_sell_buy_rows.ts"></script>
+<script src="src/render_order_history.ts" ></script>
 </body>
 </html>
