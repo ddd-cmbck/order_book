@@ -1,9 +1,25 @@
+:root {
+    --bg-color-light: #fff;
+    --bg-color-dark: #333;
+    --sell-color: red;
+    --buy-color: green;
+    --border-color-dark:  #f0f0f0;
+    --border-color-light: #333;
+    --buy-btn-color: #4caf50;
+    --sell-btn-color: #f44336;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto Mono', monospace;
 }
+
+@media  {
+
+}
+
 
 body {
     display: flex;
@@ -15,7 +31,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #333;
+    background-color: var(--bg-color-dark);
     color: white;
 }
 
@@ -197,7 +213,7 @@ input {
 .user-orders-history .tabs {
     display: flex;
     width: 100%;
-    border: 1px solid #333; /* Adds border to the tabs */
+    border: 1px solid #333;
 }
 
 .user-orders-history .tab-button {
@@ -207,11 +223,11 @@ input {
     border: none;
     cursor: pointer;
     text-align: center;
-    border-right: 1px solid #333; /* Creates border between tabs */
+    border-right: 1px solid #333;
 }
 
 .user-orders-history .tab-button:last-child {
-    border-right: none; /* Removes the last right border to look clean */
+    border-right: none;
 }
 
 .user-orders-history .tab-button.active {
@@ -223,7 +239,7 @@ input {
     width: 100%;
     border-collapse: collapse;
     margin-top: 0;
-    border: 1px solid #333; /* Adds border around the entire table */
+    border: 1px solid #333;
 }
 
 .user-orders-history th, .user-orders-history td {
@@ -257,3 +273,5 @@ footer {
 .active-form {
     display: block;
 }
+
+

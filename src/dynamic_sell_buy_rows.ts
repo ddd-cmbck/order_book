@@ -13,9 +13,10 @@ interface AveragePrice {
 const orderBook = document.getElementById('order-book') as HTMLTableSectionElement;
 const dyn_label = document.getElementById('avrg-price-label') as HTMLParagraphElement;
 
+// Example data structure for buy/sell orders
+
 const currAvrgPrice: AveragePrice = {price: 230, arrow: false};
 
-// Example data structure for buy/sell orders
 const sellOrders: Order[] = [
     { price: 250, amount: 500, total: 250000, percentage: 70 },
     { price: 240, amount: 300, total: 72000, percentage: 50 }
@@ -26,11 +27,11 @@ const buyOrders: Order[] = [
     { price: 210, amount: 200, total: 42000, percentage: 40 }
 ];
 
+
+
 function render_avrg_label():void {
     dyn_label.innerHTML = `<p id="avrg-price-label">${currAvrgPrice.price}</p>`;
 }
-
-render_avrg_label()
 
 function renderOrders(): void {
     if (!orderBook) return;
@@ -95,3 +96,4 @@ function renderOrders(): void {
 
 // Initial rendering of the table
 renderOrders();
+render_avrg_label()
