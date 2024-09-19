@@ -17,7 +17,7 @@ function setupFormSubmissions() {
         sessionStorage.setItem('stockName', stockName);
 
         // Redirect to checkout_form.html
-        window.location.href = '../../public/html/checkout_form.html';
+        window.location.href = '../public/html/checkout_form.html';
     });
 
     sellForm.addEventListener('submit', (event) => {
@@ -34,7 +34,7 @@ function setupFormSubmissions() {
         sessionStorage.setItem('stockName', stockName);
 
         // Redirect to checkout_form.html
-        window.location.href = '../../public/html/checkout_form.html';
+        window.location.href = '../public/html/checkout_form.html';
     });
 }
 

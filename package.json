@@ -1,19 +1,21 @@
 {
-  "name": "order_book",
+  "name": "microservice-project",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "start:order_service": "PORT=3000 cd order_service && npm start",
+    "start:trade_machine_service": "PORT=3050 cd trade_machine_service && npm start",
+    "start:order_book_service": "PORT=3100 cd order_book_service && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:kafka": "cd ~/KafkaEngine/kafka_2.13-3.8.0 && ./bin/kafka-server-start.sh config/server.properties",
+    "start:all": "concurrently --names \"OrderService,TradeMachineService,OrderBookService,Frontend,Database,Kafka\" --prefix-colors \"blue,green,magenta,cyan,red,yellow\" \"npm run start:order_service\" \"npm run start:trade_machine_service\" \"npm run start:order_book_service\" \"npm run start:frontend\" \"npm run start:database\" \"npm run start:kafka\"",
+    "build:order_service": "cd order_service && npm run build",
+    "build:trade_machine_service": "cd trade_machine_service && npm run build",
+    "build:order_book_service": "cd order_book_service && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build:all": "concurrently \"npm run build:order_service\" \"npm run build:trade_machine_service\" \"npm run build:order_book_service\" \"npm run build:frontend\""
   },
   "devDependencies": {
-    "prettier": "^3.3.1",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
-  },
-  "dependencies": {
-    "bootstrap-icons": "^1.11.3"
+    "concurrently": "^7.0.0"
   }
 }
