@@ -73,3 +73,4 @@ orderHistoryTabButtons.forEach((button) => {
         handleOrderHistoryTabSwitch(tabType);
     });
 });
+

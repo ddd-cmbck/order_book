@@ -44,7 +44,7 @@
 
 
   <section class="block2">
-    <h2>Stock_Name</h2>
+    <h2 id="stock-name">Stock_Name</h2>
     <p id="avrg-price-label">Current_Price</p>
     <div class="order-form">
       <div class="tabs">
@@ -53,23 +53,23 @@
       </div>
       <form id="buy-form" class="active-form">
         <div class="form-group">
-          <label for="amount">Amount:</label>
-          <input type="number" id="amount" name="amount" min="0" step="1">
+          <label for="buy-amount">Amount:</label>
+          <input type="number" id="buy-amount" name="amount" min="0" step="1" required>
         </div>
         <div class="form-group">
-          <label for="price">Price:</label>
-          <input type="number" id="price" name="price" min="0" step="0.01">
+          <label for="buy-price">Price:</label>
+          <input type="number" id="buy-price" name="price" min="0" step="0.01" required>
         </div>
         <button type="submit" class="buy-button">Buy</button>
       </form>
       <form id="sell-form" class="hidden-form">
         <div class="form-group">
-          <label for="amount_">Amount:</label>
-          <input type="number" id="amount_" name="amount" min="0" step="1">
+          <label for="sell-amount">Amount:</label>
+          <input type="number" id="sell-amount" name="amount" min="0" step="1" required>
         </div>
         <div class="form-group">
-          <label for="price_">Price:</label>
-          <input type="number" id="price_" name="price" min="0" step="0.01">
+          <label for="sell-price">Price:</label>
+          <input type="number" id="sell-price" name="price" min="0" step="0.01" required>
         </div>
         <button type="submit" class="sell-button">Sell</button>
       </form>
@@ -141,5 +141,6 @@
 <script src="/src/form_btn.ts"></script>
 <script src="/src/dynamic_sell_buy_rows.ts"></script>
 <script src="src/render_order_history.ts" ></script>
+<script src="src/submit_order_form.ts"></script>
 </body>
 </html>
