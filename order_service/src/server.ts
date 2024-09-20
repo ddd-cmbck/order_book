@@ -1,20 +1,33 @@
 // Import the 'express' module along with 'Request' and 'Response' types from express
 import express, { Request, Response } from 'express';
+import dotenv from 'dotenv';
+import {Kafka} from 'kafkajs';
+import { WebSocketServer, WebSocket } from 'ws';
 
-// Create an Express application
+dotenv.config();
+
+/* Create express application */
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Specify the port number for the server
-const port: number = 3000;
+const  wss = new WebSocketServer({port: 3002});
 
-// Define a route for the root path ('/')
-app.get('/', (req: Request, res: Response) => {
-  // Send a response to the client
-  res.send('Order Service Server');
+
+wss.on('connection', (ws: WebSocket) => {
+    console.log('Client connected to the WebSocket');
+
+    ws.on('message', (message: string) => {
+      const order = JSON.parse(message);
+      console.log('Received data is', order);
+    })
+
+    ws.on('close', () => {
+      console.log('Client disconnected');
+    });
 });
 
-// Start the server and listen on the specified port
-app.listen(port, () => {
-  // Log a message when the server is successfully running
-  console.log(`Order Service Server is running on http://localhost:${port}`);
-});
+app.listen(PORT, () => {
+  console.log(`Order Service Server is running on port ${PORT}`);
+})
+
+

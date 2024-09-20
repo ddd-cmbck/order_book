@@ -3,67 +3,99 @@ document.getElementById('payment-form')?.addEventListener('submit', function(eve
 
     let isValid = true;
 
-    // Name on Card Validation
-    const ccNameInput = document.getElementById('cc-name') as HTMLInputElement;
-    const ccName = ccNameInput.value.trim();
-    const nameRegex = /^[A-Za-z\s]+$/;
-    if (!nameRegex.test(ccName)) {
-        isValid = false;
-        ccNameInput.classList.add('invalid');
-        (ccNameInput.nextElementSibling?.nextElementSibling as HTMLElement).textContent = 'Please enter a valid full name.';
-    } else {
-        ccNameInput.classList.remove('invalid');
-        (ccNameInput.nextElementSibling?.nextElementSibling as HTMLElement).textContent = '';
+    // Helper function to show validation messages
+    function showValidationMessage(inputElement: HTMLInputElement, message: string) {
+        const messageElement = inputElement.nextElementSibling as HTMLElement;
+        if (message) {
+            inputElement.classList.add('invalid');
+            messageElement.textContent = message;
+        } else {
+            inputElement.classList.remove('invalid');
+            messageElement.textContent = '';
+        }
     }
 
-    // Credit Card Number Validation
-    const ccNumberInput = document.getElementById('cc-number') as HTMLInputElement;
-    const ccNumber = ccNumberInput.value.replace(/\s+/g, '');
-    const numberRegex = /^\d{13,19}$/;
-    if (!numberRegex.test(ccNumber)) {
-        isValid = false;
-        ccNumberInput.classList.add('invalid');
-        (ccNumberInput.nextElementSibling as HTMLElement).textContent = 'Please enter a valid credit card number.';
-    } else {
-        ccNumberInput.classList.remove('invalid');
-        (ccNumberInput.nextElementSibling as HTMLElement).textContent = '';
+    // Store value in sessionStorage
+    function storeValueInSessionStorage(key: string, value: string) {
+        sessionStorage.setItem(key, value);
     }
 
-    // Expiration Date Validation
-    const ccExpirationInput = document.getElementById('cc-expiration') as HTMLInputElement;
-    const ccExpiration = ccExpirationInput.value.trim();
-    const expirationRegex = /^\d{4}$/;
-    if (!expirationRegex.test(ccExpiration)) {
-        isValid = false;
-        ccExpirationInput.classList.add('invalid');
-        (ccExpirationInput.nextElementSibling as HTMLElement).textContent = 'Please enter expiration date in MMYY format.';
-    } else {
+    // Validate Name on Card
+    function validateNameOnCard(): boolean {
+        const ccNameInput = document.getElementById('cc-name') as HTMLInputElement;
+        const ccName = ccNameInput.value.trim();
+        const nameRegex = /^[A-Za-z\s]+$/;
+
+        if (!nameRegex.test(ccName)) {
+            showValidationMessage(ccNameInput, 'Please enter a valid full name.');
+            return false;
+        }
+
+        showValidationMessage(ccNameInput, '');
+        storeValueInSessionStorage('ccName', ccName);
+        return true;
+    }
+
+    // Validate Credit Card Number
+    function validateCardNumber(): boolean {
+        const ccNumberInput = document.getElementById('cc-number') as HTMLInputElement;
+        const ccNumber = ccNumberInput.value.replace(/\s+/g, '');
+        const numberRegex = /^\d{13,19}$/;
+
+        if (!numberRegex.test(ccNumber)) {
+            showValidationMessage(ccNumberInput, 'Please enter a valid credit card number.');
+            return false;
+        }
+
+        showValidationMessage(ccNumberInput, '');
+        storeValueInSessionStorage('ccNumber', ccNumber);
+        return true;
+    }
+
+    // Validate Expiration Date
+    function validateExpirationDate(): boolean {
+        const ccExpirationInput = document.getElementById('cc-expiration') as HTMLInputElement;
+        const ccExpiration = ccExpirationInput.value.trim();
+        const expirationRegex = /^\d{4}$/;
+
+        if (!expirationRegex.test(ccExpiration)) {
+            showValidationMessage(ccExpirationInput, 'Please enter expiration date in MMYY format.');
+            return false;
+        }
+
         const month = parseInt(ccExpiration.slice(0, 2), 10);
         const year = parseInt(ccExpiration.slice(2, 4), 10) + 2000;
         const expiryDate = new Date(year, month - 1, 1);
         const currentDate = new Date();
+
         if (month < 1 || month > 12 || expiryDate < new Date(currentDate.getFullYear(), currentDate.getMonth(), 1)) {
-            isValid = false;
-            ccExpirationInput.classList.add('invalid');
-            (ccExpirationInput.nextElementSibling as HTMLElement).textContent = 'Card is expired or invalid month.';
-        } else {
-            ccExpirationInput.classList.remove('invalid');
-            (ccExpirationInput.nextElementSibling as HTMLElement).textContent = '';
+            showValidationMessage(ccExpirationInput, 'Card is expired or invalid month.');
+            return false;
         }
+
+        showValidationMessage(ccExpirationInput, '');
+        storeValueInSessionStorage('ccExpiration', ccExpiration);
+        return true;
     }
 
-    // CVV Validation
-    const ccCvvInput = document.getElementById('cc-cvv') as HTMLInputElement;
-    const ccCvv = ccCvvInput.value.trim();
-    const cvvRegex = /^\d{3}$/;
-    if (!cvvRegex.test(ccCvv)) {
-        isValid = false;
-        ccCvvInput.classList.add('invalid');
-        (ccCvvInput.nextElementSibling as HTMLElement).textContent = 'Please enter a valid 3-digit CVV code.';
-    } else {
-        ccCvvInput.classList.remove('invalid');
-        (ccCvvInput.nextElementSibling as HTMLElement).textContent = '';
+    // Validate CVV
+    function validateCvv(): boolean {
+        const ccCvvInput = document.getElementById('cc-cvv') as HTMLInputElement;
+        const ccCvv = ccCvvInput.value.trim();
+        const cvvRegex = /^\d{3}$/;
+
+        if (!cvvRegex.test(ccCvv)) {
+            showValidationMessage(ccCvvInput, 'Please enter a valid 3-digit CVV code.');
+            return false;
+        }
+
+        showValidationMessage(ccCvvInput, '');
+        storeValueInSessionStorage('ccCvv', ccCvv);
+        return true;
     }
+
+    // Run all validations
+    isValid = validateNameOnCard() && validateCardNumber() && validateExpirationDate() && validateCvv();
 
     if (isValid) {
         alert('Payment information is valid. Proceeding to checkout.');
