@@ -52,7 +52,11 @@ main {
 
 
 .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 15px;
+    width: min(400px, 100%);
 }
 
 .form-group label {
@@ -73,6 +77,12 @@ input.invalid {
 .error-message {
     color: red;
     font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.visible {
+    display: block;
 }
 
 button[type="submit"] {

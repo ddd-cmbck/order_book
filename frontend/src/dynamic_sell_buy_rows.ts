@@ -15,16 +15,23 @@ const dyn_label = document.getElementById('avrg-price-label') as HTMLParagraphEl
 
 // Example data structure for buy/sell orders
 
-const currAvrgPrice: AveragePrice = {price: 230, arrow: false};
+const currAvrgPrice: AveragePrice = {price: 250, arrow: false};
 
 const sellOrders: Order[] = [
-    { price: 250, amount: 500, total: 250000, percentage: 70 },
-    { price: 240, amount: 300, total: 72000, percentage: 50 }
+    { price: 300, amount: 10, total: 3000, percentage: 10 },
+    { price: 290, amount: 100, total: 72000, percentage: 50 },
+    { price: 280, amount: 40, total: 72000, percentage: 32 },
+    { price: 270, amount: 35, total: 72000, percentage: 31 },
+    { price: 260, amount: 100, total: 72000, percentage: 62 }
 ];
 
 const buyOrders: Order[] = [
-    { price: 220, amount: 400, total: 88000, percentage: 60 },
-    { price: 210, amount: 200, total: 42000, percentage: 40 }
+    { price: 250, amount: 400, total: 88000, percentage: 40 },
+    { price: 240, amount: 370, total: 42000, percentage: 38 },
+    { price: 230, amount: 800, total: 42000, percentage: 70 },
+    { price: 220, amount: 1200, total: 42000, percentage: 80 },
+    { price: 210, amount: 1500, total: 42000, percentage: 90 },
+
 ];
 
 
