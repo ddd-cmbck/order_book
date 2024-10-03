@@ -33,6 +33,8 @@ window.addEventListener('DOMContentLoaded', () => {
         socket.addEventListener('open', () => {
             console.log('Connected to WebSocket server');
             socket.send(JSON.stringify(orderData));
+            window.location.href='../index.html';
+
         });
 
         socket.addEventListener('message', (event: MessageEvent) => {
@@ -41,7 +43,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
         socket.addEventListener('close', () => {
             console.log('WebSocket connection closed');
+
         });
+
+
     });
 });
 

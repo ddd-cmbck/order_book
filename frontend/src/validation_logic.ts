@@ -1,17 +1,20 @@
 document.getElementById('payment-form')?.addEventListener('submit', function(event: Event) {
     event.preventDefault();
 
-    let isValid = true;
+    let isValid = false;
 
     // Helper function to show validation messages
     function showValidationMessage(inputElement: HTMLInputElement, message: string) {
-        const messageElement = inputElement.nextElementSibling as HTMLElement;
+        const errorMessageDiv = inputElement.nextElementSibling as HTMLElement;
+
         if (message) {
             inputElement.classList.add('invalid');
-            messageElement.textContent = message;
+            errorMessageDiv.textContent = message;
+            errorMessageDiv.classList.add('visible');
         } else {
             inputElement.classList.remove('invalid');
-            messageElement.textContent = '';
+            errorMessageDiv.textContent = '';
+            errorMessageDiv.classList.remove('visible');
         }
     }
 
@@ -27,7 +30,7 @@ document.getElementById('payment-form')?.addEventListener('submit', function(eve
         const nameRegex = /^[A-Za-z\s]+$/;
 
         if (!nameRegex.test(ccName)) {
-            showValidationMessage(ccNameInput, 'Please enter a valid full name.');
+            showValidationMessage(ccNameInput, 'Please enter a valid full name');
             return false;
         }
 
@@ -43,7 +46,7 @@ document.getElementById('payment-form')?.addEventListener('submit', function(eve
         const numberRegex = /^\d{13,19}$/;
 
         if (!numberRegex.test(ccNumber)) {
-            showValidationMessage(ccNumberInput, 'Please enter a valid credit card number.');
+            showValidationMessage(ccNumberInput, 'Please enter a valid credit card number');
             return false;
         }
 
@@ -59,7 +62,7 @@ document.getElementById('payment-form')?.addEventListener('submit', function(eve
         const expirationRegex = /^\d{4}$/;
 
         if (!expirationRegex.test(ccExpiration)) {
-            showValidationMessage(ccExpirationInput, 'Please enter expiration date in MMYY format.');
+            showValidationMessage(ccExpirationInput, 'Please enter expiration date in MMYY format');
             return false;
         }
 
@@ -69,7 +72,7 @@ document.getElementById('payment-form')?.addEventListener('submit', function(eve
         const currentDate = new Date();
 
         if (month < 1 || month > 12 || expiryDate < new Date(currentDate.getFullYear(), currentDate.getMonth(), 1)) {
-            showValidationMessage(ccExpirationInput, 'Card is expired or invalid month.');
+            showValidationMessage(ccExpirationInput, 'Card is expired or invalid month');
             return false;
         }
 
@@ -85,7 +88,7 @@ document.getElementById('payment-form')?.addEventListener('submit', function(eve
         const cvvRegex = /^\d{3}$/;
 
         if (!cvvRegex.test(ccCvv)) {
-            showValidationMessage(ccCvvInput, 'Please enter a valid 3-digit CVV code.');
+            showValidationMessage(ccCvvInput, 'Please enter a valid 3-digit CVV code');
             return false;
         }
 
@@ -94,11 +97,10 @@ document.getElementById('payment-form')?.addEventListener('submit', function(eve
         return true;
     }
 
-    // Run all validations
     isValid = validateNameOnCard() && validateCardNumber() && validateExpirationDate() && validateCvv();
 
     if (isValid) {
-        alert('Payment information is valid. Proceeding to checkout.');
+        alert('Payment information is valid. Proceeding to checkout');
         // Submit the form or redirect as needed
     }
 });
